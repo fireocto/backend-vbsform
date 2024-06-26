@@ -4,7 +4,7 @@ import Form from "../models/Form.js";
 const router = Router();
 
 // Create pizza route
-router.post("/register", async (request, response) => {
+router.post("/", async (request, response) => {
   try {
     const newForm = new Form(request.body);
 

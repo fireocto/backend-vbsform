@@ -1,6 +1,9 @@
-require('dotenv').config()
-const express = require('express');
-const Form = require('./models/Form');
+import dotenv from 'dotenv';
+import express from "express";
+import mongoose from "mongoose";
+import form from './routes/form.js'
+
+dotenv.config();
 
 mongoose.connect(process.env.MONGODB, {
   // Configuration options to remove deprecation warnings, just include them to remove clutter
@@ -56,8 +59,9 @@ app.get("/status", (request, response) => {
   response.send(JSON.stringify({ message: "Service healthy" }));
 });
 
-app.use("/form", form);
+app.use("/register", form);
 
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 // const port = process.env.PORT || 5050;
 

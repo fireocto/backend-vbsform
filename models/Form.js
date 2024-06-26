@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const vbsFormSchema = new mongoose.Schema({
     childName: {
@@ -29,7 +29,7 @@ const vbsFormSchema = new mongoose.Schema({
     childEmergencyContactNumber: {
         type: String,
         required: true,
-        validate: /^[0-9 -]*$/
+        validate: /^[0-9 \-]*$/
     },
     childDismissal: {
         type: String,
@@ -44,7 +44,7 @@ const vbsFormSchema = new mongoose.Schema({
     guardianNumber: {
         type: String,
         required: true,
-        validate: /^[0-9 ]*$/
+        validate: /^[0-9 \-]*$/
     },
     guardianEmail: {
         type: String,
@@ -53,8 +53,7 @@ const vbsFormSchema = new mongoose.Schema({
     },
     guardianAddress: {
         type: String,
-        required: true,
-        validate: /^[A-Za-z0-9 ]*$/
+        validate: /^[A-Za-z0-9 ,]*$/
     },
     guardianChurch: {
         type: String,
