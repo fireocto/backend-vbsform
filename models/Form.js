@@ -53,16 +53,15 @@ const vbsFormSchema = new mongoose.Schema({
     },
     guardianAddress: {
         type: String,
+        required: true,
         validate: /^[A-Za-z0-9 ,]*$/
     },
     guardianChurch: {
         type: String,
-        required: true,
         validate: /^[A-Za-z0-9 ]*$/
     },
     guardianGuest: {
         type: String,
-        required: true,
         validate: /^[A-Za-z0-9 /]*$/
     },
     photoPermission: {
