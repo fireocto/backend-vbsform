@@ -59,7 +59,7 @@ app.get("/status", (request, response) => {
   response.send(JSON.stringify({ message: "Service healthy" }));
 });
 
-app.use("/", form);
+app.use("/register", form);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
