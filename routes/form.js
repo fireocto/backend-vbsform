@@ -57,7 +57,7 @@ router.get("/:id", async (request, response) => {
 // Delete a pizza by ID
 router.delete("/:id", async (request, response) => {
   try {
-    const data = await Form.findByIdAndRemove(request.params.id, {});
+    const data = await Form.findByIdAndDelete(request.params.id, {});
 
     response.json(data);
   } catch (error) {
