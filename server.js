@@ -34,6 +34,14 @@ const logging = (request, response, next) => {
 
 // CORS Middleware
 const cors = (req, res, next) => {
+  const allowedOrigins = ['https://blankenshipchurch.com', 'http://localhost:3000'];
+
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader(
     "Access-Control-Allow-Headers",
     "X-Requested-With,content-type, Accept,Authorization,Origin"
@@ -44,7 +52,13 @@ const cors = (req, res, next) => {
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200); // Respond to OPTIONS requests with OK status
+    } else {
+    next();
+    }
 };
 
 app.use(cors);
