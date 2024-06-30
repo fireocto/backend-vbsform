@@ -34,7 +34,11 @@ const logging = (request, response, next) => {
 
 // CORS Middleware
 const cors = (req, res, next) => {
-  const allowedOrigins = ['https://blankenshipchurch.com', 'http://localhost:3000'];
+  const allowedOrigins = [
+    'https://blankenshipchurch.com',
+    'https://blankenshipchurch.com/register',
+    'https://blankenshipchurch.com/rpowell',
+    'http://localhost:3000'];
 
   const origin = req.headers.origin;
 
