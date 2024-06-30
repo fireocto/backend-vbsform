@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose";
 import form from './routes/form.js';
-import cors from "cors";
+// import cors from "cors";
 
 dotenv.config();
 
@@ -33,45 +33,27 @@ const logging = (request, response, next) => {
   next();
 };
 
-app.use(cors({
-  origin: "https://blankenshipchurch.com",
-  methods: ["GET", "POST", "OPTIONS", "DELETE"]
-}))
+// app.use(cors({
+//   origin: "https://blankenshipchurch.com",
+//   methods: ["GET", "POST", "OPTIONS", "DELETE"]
+// }))
 
 // CORS Middleware
-// const cors = (req, res, next) => {
-//   const allowedOrigins = [
-//     'https://blankenshipchurch.com',
-//     'https://blankenshipchurch.com/register',
-//     'https://blankenshipchurch.com/rpowell',
-//     'http://localhost:3000'];
+const cors = (req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, Accept,Authorization,Origin"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+};
 
-//   const origin = req.headers.origin;
-
-//   if (allowedOrigins.includes(origin)) {
-//     res.setHeader("Access-Control-Allow-Origin", origin);
-//   }
-
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "X-Requested-With,content-type, Accept,Authorization,Origin"
-//   );
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-
-//     // Handle preflight requests
-//     if (req.method === 'OPTIONS') {
-//       res.sendStatus(200); // Respond to OPTIONS requests with OK status
-//     } else {
-//     next();
-//     }
-// };
-
-// app.use(cors);
+app.use(cors);
 app.use(express.json());
 app.use(logging);
 
