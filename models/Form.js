@@ -4,7 +4,7 @@ const vbsFormSchema = new mongoose.Schema({
     childName: {
         type: String,
         required: true,
-        validate: /^[A-Za-z ]*$/
+        validate: /^[A-Za-z \,;:'.]*$/
     },
     childAge: {
         type: Number,
@@ -14,17 +14,17 @@ const vbsFormSchema = new mongoose.Schema({
     childAddress: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9 ,]*$/
+        validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     childInfo: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9 ]*$/
+        validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     childEmergencyContactName: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9 ]*$/
+        validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     childEmergencyContactNumber: {
         type: String,
@@ -34,12 +34,12 @@ const vbsFormSchema = new mongoose.Schema({
     childDismissal: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9 ]*$/
+        validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     guardianName: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9 ]*$/
+        validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     guardianNumber: {
         type: String,
@@ -49,7 +49,7 @@ const vbsFormSchema = new mongoose.Schema({
     guardianEmail: {
         type: String,
         required: true,
-        validate: /^[A-Za-z0-9@.]*$/  // Adjusted for email format, consider using a library or more robust validation for emails
+        validate: /^[A-Za-z0-9@.,;:'.]*$/  // Adjusted for email format, consider using a library or more robust validation for emails
     },
     guardianAddress: {
         type: String,
