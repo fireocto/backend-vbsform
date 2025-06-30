@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose";
-import form from './routes/form.js';
+import form from './routes/formRoutes.js';
 // import cors from "cors";
 
 dotenv.config();
@@ -66,6 +66,7 @@ app.get("/status", (request, response) => {
 });
 
 app.use("/register", form);
+app.use('/register', form)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
