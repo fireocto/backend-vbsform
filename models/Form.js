@@ -18,7 +18,7 @@ const vbsFormSchema = new mongoose.Schema({
     },
     childInfo: {
         type: String,
-        required: true,
+        required: false,
         validate: /^[A-Za-z0-9 ,;:'.]*$/
     },
     childEmergencyContactName: {
@@ -48,24 +48,32 @@ const vbsFormSchema = new mongoose.Schema({
     },
     guardianEmail: {
         type: String,
-        required: true,
-        validate: /^[A-Za-z0-9@.,;:'.]*$/  // Adjusted for email format, consider using a library or more robust validation for emails
+        required: false,
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
     },
     guardianAddress: {
         type: String,
-        // validate: /^[A-Za-z0-9 ,]*$/
+        required: false,
+        validate: /^[A-Za-z0-9 ,]*$/
     },
     guardianChurch: {
         type: String,
-        // validate: /^[A-Za-z0-9 ]*$/
+        required: false,
+        validate: /^[A-Za-z0-9 ]*$/
     },
     guardianGuest: {
         type: String,
-        // validate: /^[A-Za-z0-9 /]*$/
+        required: false,
+        validate: /^[A-Za-z0-9 /]*$/
     },
     photoPermission: {
         type: Boolean,
         required: true
+    },
+    year: {
+        type: Number,
+        required: true,
+        default: () => new Date().getFullYear()
     },
 });
 
